@@ -76,15 +76,15 @@ async def on_button_click(inter_mess):
                 try:
                     await inter_mess.author.add_roles(role)
                 except disnake.Forbidden:
-                    await inter_mess.send('this cant be done')
+                    await inter_mess.send('this cant be done',ephemeral=True)
                 else:
-                    await inter_mess.send('success')
+                    await inter_mess.send('success',ephemeral=True)
             else:
-                await inter_mess.send('role not found 404')
+                await inter_mess.send('role not found 404',ephemeral=True)
         else:
-            await inter_mess.send('only can give role')
+            await inter_mess.send('only can give role',ephemeral=True)
     else:
-        await inter_mess.send('invalid button')
+        await inter_mess.send('invalid button',ephemeral=True)
 
 
 counter = count()
