@@ -210,4 +210,4 @@ async def change_presence(inter, activtext='im better than you', activity_type='
     await inter.send('if it doesnt change, you might have the wrong combination\n this might be broken')
 
 
-ibot.run('MTAxNDgzMzkwMzk3MTg2MDUxMA.GaPM5X.rCAPk3HqqhHfR9x5AXZOzx5IOIOOzV8uJRH8z0')
+ibot.run('MTAxNDgzMzkwMzk3MTg2MDUxMA.GiPUnW.wEsMUBkQREwCJTwKP4Z8g4XJ1IFO5i6JZ_91KE')
