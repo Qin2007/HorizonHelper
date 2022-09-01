@@ -73,8 +73,12 @@ async def on_button_click(inter_mess):
         if split[1] == 'give':
             role = disnake.utils.find(lambda m: str(m.id) == split[2], inter_mess.guild.roles)
             if role:
-                await inter_mess.author.add_roles(role)
-                await inter_mess.send('success')
+                try:
+                    await inter_mess.author.add_roles(role)
+                except disnake.Forbidden:
+                    await inter_mess.send('this cant be done')
+                else:
+                    await inter_mess.send('success')
             else:
                 await inter_mess.send('role not found 404')
         else:
@@ -149,65 +153,66 @@ async def kick(inter, user: disnake.Member):
         await inter.send('your shoes arent strong enough', ephemeral=True)
 
 
-@ibot.slash_command(
-    description='change the status (only for 2 people)',
-    options=[
-        disnake.Option(
-            name='activity_type', description='playing,watching,listening,streaming,custom',
-            type=disnake.OptionType.string,
-            required=True,
-            choices=[
-                disnake.OptionChoice(
-                    name='streaming', value='stream'
-                ),
-                # disnake.OptionChoice(
-                #     name='watching', value='wathing'
-                # ),
+# @ibot.slash_command(
+#     description='change the status (only for 2 people)',
+#     options=[
+#         disnake.Option(
+#             name='activity_type', description='playing,watching,listening,streaming,custom',
+#             type=disnake.OptionType.string,
+#             required=True,
+#             choices=[
+#                 disnake.OptionChoice(
+#                     name='streaming', value='stream'
+#                 ),
+#                 # disnake.OptionChoice(
+#                 #     name='watching', value='wathing'
+#                 # ),
+#
+#                 disnake.OptionChoice(
+#                     name='custom', value='custom'
+#                 ),
+#                 disnake.OptionChoice(
+#                     name='playing', value='game'
+#                 ),
+#                 disnake.OptionChoice(
+#                     name='none', value='None'
+#                 ),
+#             ]
+#         ),
+#         disnake.Option(
+#             name='activtext', description='for custom only',
+#             type=disnake.OptionType.string,
+#             required=True,
+#         ),
+#         disnake.Option(
+#             name='name', description='the name',
+#             type=disnake.OptionType.string,
+#             required=True,
+#         ),
+#     ]
+# )
+# async def change_presence(inter, activtext='im better than you', activity_type='none', name=''):
+#     activ = None
+#     if activity_type == 'stream':
+#         activ = disnake.Streaming(
+#             platform='leveling ant stream',
+#             name=name,
+#             url='https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags'
+#         )
+#     elif activity_type == 'game':
+#         activ = disnake.Game(
+#             name=name,
+#         )
+#     elif activity_type == 'custom':
+#         activ = disnake.CustomActivity(
+#             name=activtext,
+#         )
+#     elif activity_type == 'None':
+#         activ = None
+#     if activ:
+#         await ibot.change_presence(activity=activ)
+#     await inter.send('if it doesnt change, you might have the wrong combination\nthis might be broken')
 
-                disnake.OptionChoice(
-                    name='custom', value='custom'
-                ),
-                disnake.OptionChoice(
-                    name='playing', value='game'
-                ),
-                disnake.OptionChoice(
-                    name='none', value='None'
-                ),
-            ]
-        ),
-        disnake.Option(
-            name='activtext', description='for custom only',
-            type=disnake.OptionType.string,
-            required=True,
-        ),
-        disnake.Option(
-            name='name', description='the name',
-            type=disnake.OptionType.string,
-            required=True,
-        ),
-    ]
-)
-async def change_presence(inter, activtext='im better than you', activity_type='none', name=''):
-    activ = None
-    if activity_type == 'stream':
-        activ = disnake.Streaming(
-            platform='leveling ant stream',
-            name=name,
-            url='https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags'
-        )
-    elif activity_type == 'game':
-        activ = disnake.Game(
-            name=name,
-        )
-    elif activity_type == 'custom':
-        activ = disnake.CustomActivity(
-            name=activtext,
-        )
-    elif activity_type == 'None':
-        activ = None
-    if activ:
-        await ibot.change_presence(activity=activ)
-    await inter.send('if it doesnt change, you might have the wrong combination\n this might be broken')
 
-
+print(f'run {__file__}')
 ibot.run('MTAxNDgzMzkwMzk3MTg2MDUxMA.GiPUnW.wEsMUBkQREwCJTwKP4Z8g4XJ1IFO5i6JZ_91KE')
