@@ -1,24 +1,8 @@
 the_list = [
     'fuck',
-    'fuk',
-    'kut',
     'shit',
-    'bullshit',
-    'frick',
     'ass',
-    # semi swear words
-    'sex',
-    'hate',
-    'bloody',
-    'attack',
-    'hell ',
-    'wtf',
-    'crap',
-    'frick',
-    'bozo',
-    # just to filter
-    'qin',
-    'quin',
+    # go fill your owm list
 ]
 
 

@@ -215,4 +215,4 @@ async def kick(inter, user: disnake.Member):
 
 
 print(f'run {__file__}')
-ibot.run('MTAxNDgzMzkwMzk3MTg2MDUxMA.GiPUnW.wEsMUBkQREwCJTwKP4Z8g4XJ1IFO5i6JZ_91KE')
+ibot.run('') # here token
